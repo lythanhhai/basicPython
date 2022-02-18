@@ -16,7 +16,8 @@ s = input()
 print(h + ':' + m + ':' + s)
 '''
 
-#
+# Số tự mãn
+
 '''n = int(input())
 m = str(n)
 sum = 0
@@ -26,7 +27,10 @@ for i in m:
 if sum == int(m):
     print("YES")
 else:
-    print("NO")'''
+    print("NO")
+'''
+
+
 '''
 n = int(input())
 bin8 = lambda x : ''.join(reversed( [str((x >> i) & 1) for i in range(8)] ) )
