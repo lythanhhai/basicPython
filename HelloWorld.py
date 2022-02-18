@@ -5,8 +5,9 @@ from tkinter import N
 N = 8
 print("Tôi tên là " + M)'''
 
-
-'''N = int(input())
+# đếm số ước số
+'''
+N = int(input())
 count = 0
 if N < 10000000:
     for i in range(1, int(N / 2 + 1)):
@@ -17,7 +18,8 @@ else:
     for i in range(1, int(N ** (1/2) + 1)):
         if (N % i == 0):
             count = count + 1
-    print(count * 2 - 1)'''
+    print(count * 2 - 1)
+'''
 
 
 '''n = int(input())
