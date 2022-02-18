@@ -30,6 +30,7 @@ else:
     print("NO")
 '''
 
+# chuyển thập phân sang nhị phân
 
 '''
 n = int(input())
