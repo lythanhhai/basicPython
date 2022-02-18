@@ -22,15 +22,19 @@ else:
 '''
 
 
-'''n = int(input())
+'''
+n = int(input())
 count = 0
 for i in range(n, n ** 2 + 1):
         count = count + 1
 
-print(n)'''
+print(n)
+'''
 
-# bài cuối 
-'''N = int(input())
+# tính tổng a + b mỗi hàng 
+# C1
+'''
+N = int(input())
 arr = []
 
 for i in range(0, N):
@@ -47,7 +51,8 @@ for i in range(0, N):
     arrRes.append(sum)
 
 for i in range(0, N):
-    print(arrRes[i])'''
+    print(arrRes[i])
+'''
 
 # import sys
 # sys.setrecursionlimit(100000)
