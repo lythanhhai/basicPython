@@ -5,7 +5,7 @@ for i in range(n, n ** 2 + 1):
 print(count)'''
 
 from re import M
-
+# định dạng giờ
 '''
 n = int(input())
 print(n ** 2 - n + 1)
@@ -16,6 +16,7 @@ s = input()
 print(h + ':' + m + ':' + s)
 '''
 
+#
 '''n = int(input())
 m = str(n)
 sum = 0
