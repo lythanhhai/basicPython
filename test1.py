@@ -4,6 +4,7 @@ t2 = dt.datetime.strptime('02:00:00', '%H:%M:%S')
 time_zero = dt.datetime.strptime('00:00:00', '%H:%M:%S')
 print((t1 - time_zero + t2).time())'''
 
+# thời gian làm bài
 h, m, s, x = map(int, input().split())
 s += x
 while s >= 60:
