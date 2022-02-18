@@ -40,7 +40,6 @@ print(bin8(n))
 
 # thừa số nguyên tố
 
-
 '''def prime(m):
     if m < 2:
         return False
@@ -55,7 +54,7 @@ for i in range(2, n + 1):
         print(str(i), end=" ") '''
 
 
-# biến đổi chuỗi
+# biến đổi chuỗi hoa thành thường và ngược lại
 '''
 sequence = input()
 res = ''
