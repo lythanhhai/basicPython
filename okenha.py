@@ -1,0 +1,6 @@
+n = int(input())
+t = input()
+arr = list(int(x) for x in t.split(' '))
+res = list(dict.fromkeys(arr))
+print(len(res))
+print(res)
