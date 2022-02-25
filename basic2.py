@@ -94,26 +94,27 @@
 
 #7
 
-n = int(input())
-arr = list(input().split(' '))
-arr.sort()
-arr1 = list(input().split(' '))
-arr1.sort(reverse=True)
-print(arr)
-print(arr1)
-cost = 0
-for i in range(0, len(arr)):
-    cost += int(arr[i]) * int(arr1[i])
-print(cost)
+# n = int(input())
+# arr = list(map(int,input().split()))
+# arr1 = list(map(int,input().split()))
+# if(sum(arr) < sum(arr1)):
+#     arr.sort()
+#     arr1.sort(reverse=True)
+#     print(sum(map(lambda a, b: a*b, arr, arr1)))
+# else:
+#     arr.sort(reverse=True)
+#     arr1.sort()
+#     print(sum(map(lambda a, b: a*b, arr, arr1)))
+
 
 #8
 # n = int(input())
-# arr = list(int(x) for x in input().split(' '))
-# res = list(dict.fromkeys(arr))
-# res.sort()
+# arr = list(map(int,input().split()))
+# res = list(set(arr))
 # print(len(res))
+# res.sort()
 # for i in res:
-#     print(i)
+#     print(i, end=" ")
 
 
 #9
@@ -166,3 +167,29 @@ print(cost)
 #         index = i
 
 # print(temp[index] + " " + str(max))
+
+#10 C2
+# n = int(input())
+# dict = {}
+# for i in range(1, n + 1):
+#     key, value = map(str, input().split())
+#     if key in dict.keys():
+#         dict[key] = dict[key] + int(value)
+#     else:
+#         dict[key] = int(value)
+# print(max(dict, key = dict.get), end=" ")
+# print(dict[max(dict, key = dict.get)])
+
+# 3
+n = input()
+arr = list(map(int, n))
+if(sum(arr) % 9 == 0):
+    if (0 in arr or (5 in arr and 0 in arr)):
+        print(int(''.join(map(str, sorted(arr, reverse=True)))))
+    elif (5 in arr):
+        arr.remove(5)
+        print(int(''.join(map(str, sorted(arr, reverse=True))) + '5'))
+    else:
+        print(-1)
+else:
+    print(-1)
