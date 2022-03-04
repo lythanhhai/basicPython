@@ -33,6 +33,7 @@
 #     print(int(count) - common)
 
 #print(common)
+
 #3
 
 # def solve(n, k):
@@ -80,7 +81,18 @@
 # print(resFinal)
 
 #5 
-
+# n = input()
+# arr = list(map(int, n))
+# if(sum(arr) % 9 == 0):
+#     if (0 in arr or (5 in arr and 0 in arr)):
+#         print(int(''.join(map(str, sorted(arr, reverse=True)))))
+#     elif (5 in arr):
+#         arr.remove(5)
+#         print(int(''.join(map(str, sorted(arr, reverse=True))) + '5'))
+#     else:
+#         print(-1)
+# else:
+#     print(-1)
 
 #6
 # n, k = map(int, input().split())
@@ -180,16 +192,3 @@
 # print(max(dict, key = dict.get), end=" ")
 # print(dict[max(dict, key = dict.get)])
 
-# 3
-n = input()
-arr = list(map(int, n))
-if(sum(arr) % 9 == 0):
-    if (0 in arr or (5 in arr and 0 in arr)):
-        print(int(''.join(map(str, sorted(arr, reverse=True)))))
-    elif (5 in arr):
-        arr.remove(5)
-        print(int(''.join(map(str, sorted(arr, reverse=True))) + '5'))
-    else:
-        print(-1)
-else:
-    print(-1)
