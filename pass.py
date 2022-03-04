@@ -79,7 +79,7 @@
 
 # print(maxLen(List))
 
-
+# 3
 # def binary_search(arr, low, high, x):
 #     if(x < arr[0]):
 #         return -1
@@ -114,67 +114,101 @@
 
 
 #1111
+m, n = map(int, input().split())
 
-N = 4
+arr = []
+for i in range(0, m):
+    row = input()
+    arr.append(row)
 
-def printSolution( sol ):
-	
-	for i in sol:
-		for j in i:
-			print(str(j) + " ", end ="")
-		print("")
+maze = [[0]*n for _ in range(m)]
+if arr[-1][-1] == "#":
+    count = -1
+    print(count)
+else:
+    for i in range(0, m):
+        for j in range(0, n):
+            if arr[i][j] == ".": 
+                maze[i][j] = 0
+            else:
+                maze[i][j] = 1
 
-def isSafe( maze, x, y ):
-	
-	if x >= 0 and x < N and y >= 0 and y < N and maze[x][y] == 1:
-		return True
-	
-	return False
+    solution = [[0]*n for _ in range(m)]
+    count = 0
 
-def solveMaze( maze, m, n ):
-	
-	sol = [ [ 0 for j in range(m) ] for i in range(n) ]
-	
-	if solveMazeUtil(maze, 0, 0, sol) == False:
-		return False
-	
-	printSolution(sol)
-	return True
-	
-def solveMazeUtil(maze, x, y, sol):
+    def solvemaze(r, c):
 
-	if x == N - 1 and y == N - 1 and maze[x][y]== 1:
-		sol[x][y] = 1
-		return True
-		
-	if isSafe(maze, x, y) == True:
+        if (r==m-1) and (c==n-1):
+            solution[r][c] = 1
+            return True
 
-		if sol[x][y] == 1:
-			return False
-		
-		sol[x][y] = 1
-		
-		if solveMazeUtil(maze, x + 1, y, sol) == True:
-			return True
+        if r>=0 and c>=0 and r<m and c<n and solution[r][c] == 0 and maze[r][c] == 0:
+            solution[r][c] = 1
+            # xuống
+            if solvemaze(r+1, c):
+                return True
+            # phải
+            if solvemaze(r, c+1):
+                return True
+            # lên
+            if solvemaze(r-1, c):
+                return True
+            # trái
+            if solvemaze(r, c-1):
+                return True
+            #backtracking
+            solution[r][c] = 0
+            return False
+        return 0
 
-		if solveMazeUtil(maze, x, y + 1, sol) == True:
-			return True
+    if(solvemaze(0, 0)):
+        for i in solution:
+            for j in i:
+                if j == 1:
+                    count += 1
+    else:
+        count = -1
 
-		if solveMazeUtil(maze, x - 1, y, sol) == True:
-			return True
-			
-		if solveMazeUtil(maze, x, y - 1, sol) == True:
-			return True
-		
-		sol[x][y] = 0
-		return False
+    if count == -1:
+        print(count)
+    else:
+        print(count - 1)
 
-if __name__ == "__main__":
 
-	maze = [ [1, 0, 0, 0],
-			[1, 1, 0, 1],
-			[0, 1, 0, 0],
-			[1, 1, 1, 1] ]
-			
-	solveMaze(maze, 4, 4)
 
+# def min_solution(maze, x = 0, y = 0, path = None):
+#     def try_next(x, y):
+#         return [(a, b) for a, b in [(x - 1, y), (x, y - 1), (x + 1, y), (x, y + 1)] if 0 <= a < n and 0 <= b < m]
+
+#     n = len(maze)
+#     m = len(maze[0])
+    
+#     if path is None:
+#         path = [(x, y)]
+
+#     if x == n - 1 and y == m - 1:
+#         return path
+    
+#     maze[x][y] = 1
+    
+#     shortest_path = None            
+#     for a, b in try_next(x, y):
+#         if not maze[a][b]:
+#             last_path = min_solution(maze, a, b, path + [(a, b)])
+            
+#             if not shortest_path:
+#                 shortest_path = last_path
+#             elif last_path and len(last_path) < len(shortest_path):
+#                 shortest_path = last_path
+     
+    
+#     maze[x][y] = 0 
+    
+#     return shortest_path
+
+# t = min_solution(maze)
+# if t:
+#     print(len(t) - 1)
+# else:
+#     count = -1
+#     print(count)
