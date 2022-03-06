@@ -1,44 +1,66 @@
-def move(P, i, m, n):
-    if i == 0:
-        if P[0] < m - 1:
-            return P[0] + 1, P[1]
-    if i == 1:
-        if P[1] < n - 1:
-            return P[0], P[1] + 1
-    return None
+# def MaximumPath(grid):
+ 
+#     N = len(grid)
+#     M = len(grid[0])
+ 
+#     sum = [[0 for i in range(M + 1)]
+#               for i in range(N + 1)]
+ 
+#     for i in range(1, N + 1):
+#         for j in range(1, M + 1):
+ 
+#             sum[i][j] = (max(sum[i - 1][j],
+#                              sum[i][j - 1]) +
+#                         grid[i - 1][j - 1])
+ 
+#     # return sum[N][M]
+#     return sum
+ 
+
+# n = int(input())
+# grid = []
+# for i in range(n):
+#     grid.append(list(map(int, input().split())))
+# a = 2
+# #print(MaximumPath(grid), a, sep=" ")
+# print(MaximumPath(grid))
+ 
+
+
+allPaths = []
+def findPaths(maze,m,n):
+    path = [0 for d in range(m+n-1)]
+    findPathsUtil(maze,m,n,0,0,path,0)
+     
+def findPathsUtil(maze,m,n,i,j,path,index):
+    global allPaths
+
+    if i == m-1:
+        for k in range(j,n):
+            path[index+k-j] = maze[i][k]
+        allPaths.append(sum(path))
+        return
+    if j == n-1:
+        for k in range(i,m):
+            path[index+k-i] = maze[k][j]
+        allPaths.append(sum(path))
+        return
+
+    path[index] = maze[i][j]
+     
+    findPathsUtil(maze, m, n, i+1, j, path, index+1)
+     
+    findPathsUtil(maze, m, n, i, j+1, path, index+1)
 
 n = int(input())
 maze = []
 for i in range(n):
-    maze.append(list(input().split()))
+    maze.append(list(map(int, input().split())))
 
-start = (0, 0)
-goal = (n-1, n-1)
-
-pathBiggest = -1
+findPaths(maze, n, n)
 count = 0
-
-Open = [(start, 0, None)]
-Closed = {start}
-res = []
-while Open:
-    O_TT = Open.pop(0)
-    O = O_TT[0]
-
-    if O == goal:
-        # if pathBiggest == -1:
-        #     pathBiggest = O_TT[1]
-        # elif pathBiggest > O_TT[-1]:
-        #     pathBiggest = O_TT[-1]
-        #res.append(O_TT[-1])
-        break
-
-    for i in range(2):
-        child = move(O, i, n, n)
-        if child and child not in Closed:
-            Open.append((child, O_TT[1] + 1, O_TT))
-            Closed.add(child)
-
-print(len(res))
-print(res)
-print(pathBiggest)
+for i in allPaths:
+    if i == max(allPaths):
+        count += 1
+        
+print(max(allPaths), count, sep=" ")
